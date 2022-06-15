@@ -1,0 +1,22 @@
+{
+
+    "groups" : [
+        {
+            "name": "Engineering"
+        }
+    ],
+
+    "users": [
+        {
+            "first_name": "Peter",
+            "last_name": "Gorley",
+            "password": "PAssword1",
+            "username": "pgorley",        
+            "groups": [
+                "Engineering"
+            ]
+        }
+
+    ]
+
+}
