@@ -63,8 +63,12 @@ Add-Computer -Domainname xyz.com -Credential xyz\Administrator -Force -Restart
 ```
 
 5. Install chocolatey
+```shell
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
 
+```shell
 choco install git
 choco install vscode
 choco install microsoft-windows-terminal
+```
