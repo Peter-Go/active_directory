@@ -3,7 +3,17 @@
 1. Use `sconfig` to:
     - Change the hostname
     - Change the IP address to static
-    - Cahnge the DNS server to our own IP address
+    - Change the DNS server to our own IP address
+
+    sconfig in server 2022 has a bug where the IP address wont change so for now use powershell:
+
+    ```shell
+    Rename-Computer -NewName dc01
+    Get-NetAdapter
+    $ip = "172.16.0.1"
+    $gw="172.16.0.254"
+    $dns = "172.16.0.1"
+    ```
 
 2. Install the Active Directory Windows Feature
 
@@ -15,8 +25,8 @@ Confirm that AD is installed
 ```shell
 Get-WindowsFeature -Name *AD*
 ```
+3. Setup a new forest
 
-Setup a new forest
 ```shell
 Install-ADDSForest -DomainName gorley.internal -ForestMode Win2012r2 -DomainMode Win2012r2 -DomainNetbiosName GORLEY -InstallDns:$true
 ```
@@ -41,12 +51,20 @@ Check where the FSMO roles are located
 Netdom /query FSMO
 ```
 
-Check IP Address
+Check IP Addresses
 ```shell
 Get-NetIPAddress
+Get-DnsClientServerAddress
 ```
 
-# Joining the Workstation to the domain
+4. Joining the Workstation to the domain
 ```shell
 Add-Computer -Domainname xyz.com -Credential xyz\Administrator -Force -Restart
 ```
+
+5. Install chocolatey
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+choco install git
+choco install vscode
+choco install microsoft-windows-terminal
