@@ -7,7 +7,7 @@ git add .\README.md
 ```
 Or
 ```shell
-git add
+git add .
 ```
 
 2. To commit:
