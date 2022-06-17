@@ -104,7 +104,3 @@ Add the pub key to Github account in settings
 ```shell
 git clone git@github.com:Peter-Go/active_directory.git
 ```
-
-
-
-
