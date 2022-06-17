@@ -92,3 +92,19 @@ choco install git
 choco install vscode
 choco install microsoft-windows-terminal
 ```
+
+6. Configure Git
+
+```shell
+ssh-keygen
+```
+
+Add the pub key to Github account in settings
+
+```shell
+git clone git@github.com:Peter-Go/active_directory.git
+```
+
+
+
+
