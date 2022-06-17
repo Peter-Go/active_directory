@@ -15,7 +15,23 @@
     $dns = "172.16.0.1"
     ```
 
-2. Install the Active Directory Windows Feature
+2. Add server to trusted hosts and enable remoting
+
+```shell
+start-service winrm
+```
+```shell
+set-item wsman:\localhost\Client\TrustedHosts -value 172.16.4.250
+```
+
+```shell
+New-pssession -ComputerName 172.16.4.250 -Credential (Get-Credential)
+```
+```shell
+Enter-PSSession -computername dc01
+```
+
+3. Install the Active Directory Windows Feature
 
 ```shell
 Install-WindowsFeature AD-Domain-Services –IncludeManagementTools -Verbose
@@ -25,7 +41,7 @@ Confirm that AD is installed
 ```shell
 Get-WindowsFeature -Name *AD*
 ```
-3. Setup a new forest
+4. Setup a new forest
 
 ```shell
 Install-ADDSForest -DomainName gorley.internal -ForestMode Win2012r2 -DomainMode Win2012r2 -DomainNetbiosName GORLEY -InstallDns:$true
