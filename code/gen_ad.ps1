@@ -27,12 +27,8 @@ function CreateADUser() {
         {
             Write-Warning "User $name NOT added to group $group_name because it does not exist"
         }
+    }
 }
-
-
-$json = (Get-Content $JSONFile | ConvertFrom-Json)
-
-$Global:Domain = $json.domain
 
 foreach ($group in $json.Groups) {
     CreateADGroup $group
@@ -41,3 +37,6 @@ foreach ($group in $json.Groups) {
 foreach ($user in $json.Users) {
     CreateADUser $user
 }
+
+$json = (Get-Content $JSONFile | ConvertFrom-Json)
+$Global:Domain = $json.domain
