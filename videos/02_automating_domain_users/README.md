@@ -3,7 +3,8 @@
 1. Add New-PSSession to variable
 
 ```shell
-$dc = New-pssession -ComputerName 172.16.4.250 -Credential (Get-Credential)
+$creds = (Get-Credential)
+$dc = New-pssession -ComputerName 172.16.4.250 -Credential $creds
 ```
 
 ```shell
@@ -15,7 +16,6 @@ Enter-PSSession $dc
 ```shell
 copy-item .\ad_schema.json -ToSession $dc C:\Windows\Tasks
 ```
-
 
 
 

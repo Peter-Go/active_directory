@@ -1,19 +1,26 @@
 {
 
+    "domain": "gorley.internal",
+
     "groups" : [
         {
-            "name": "Engineering"
+            "name": "Employees"
         }
     ],
 
     "users": [
         {
-            "first_name": "Peter",
-            "last_name": "Gorley",
-            "password": "PAssword1",
-            "username": "pgorley",        
+            "name": "Alice Lice",
+            "password": "Password1",       
             "groups": [
-                "Engineering"
+                "Employees"
+            ]
+        },
+        {
+            "name": "Bob Ob",
+            "password": "Password1",       
+            "groups": [
+                "Employees"
             ]
         }
 
