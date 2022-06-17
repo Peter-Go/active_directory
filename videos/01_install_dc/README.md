@@ -17,19 +17,23 @@
 
 2. Add server to trusted hosts and enable remoting
 
-```shell
-start-service winrm
-```
-```shell
-set-item wsman:\localhost\Client\TrustedHosts -value 172.16.4.250
-```
+    - On DC01 run:
+    ```shell
+    start-service winrm
+    ```
 
-```shell
-New-pssession -ComputerName 172.16.4.250 -Credential (Get-Credential)
-```
-```shell
-Enter-PSSession -computername dc01
-```
+    - On management client run:
+    ```shell
+    set-item wsman:\localhost\Client\TrustedHosts -value 172.16.4.250
+    ```
+
+    ```shell
+    New-pssession -ComputerName 172.16.4.250 -Credential (Get-Credential)
+    ```
+
+    ```shell
+    Enter-PSSession -computername dc01
+    ```
 
 3. Install the Active Directory Windows Feature
 
