@@ -31,6 +31,13 @@ function CreateADUser() {
 
 
 $json = (Get-Content $JSONFile | ConvertFrom-Json)
+
+$Global:Domain = $json.domain
+
+foreach ($group in $json.Groups) {
+    CreateADGroup $group
+}
+
 foreach ($user in $json.Users) {
     CreateADUser $user
 }
